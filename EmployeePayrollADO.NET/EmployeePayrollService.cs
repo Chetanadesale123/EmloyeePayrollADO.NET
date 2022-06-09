@@ -94,5 +94,27 @@ namespace EmployeePayrollADO.NET
             }
             return EmpList;
         }
+        //To Update Emp data   
+        public bool UpdateEmp(EmployeePayrollModel obj)
+        {
+            connection();
+            SqlCommand com = new SqlCommand("SPUpdateEmpDetails", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Id", obj.Id);
+            com.Parameters.AddWithValue("@Salary", obj.Salary);
+
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

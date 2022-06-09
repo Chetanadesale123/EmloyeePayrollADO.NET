@@ -8,7 +8,7 @@ class Program
         bool check = true;
         while (check)
         {
-            Console.WriteLine("1. To Insert the Data in Data Base \n2.Retrieve All Employee Data from the Data Base\n3.END");
+            Console.WriteLine("1. To Insert the Data in Data Base \n 2.Retrieve All Employee Data from the Data Base\n 3.Update Employee Salary\n4.END");
             Console.WriteLine("Enter the Option");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -38,6 +38,12 @@ class Program
                     }
                     break;
                 case 3:
+                    EmployeePayrollModel empModel = new EmployeePayrollModel();
+                    empModel.Id = 2;
+                    empModel.Salary = 90000;
+                    empservice.UpdateEmp(empModel);
+                    break;
+                case 4:
                     check = false;
                     break;
                 default:
