@@ -8,7 +8,7 @@ class Program
         bool check = true;
         while (check)
         {
-            Console.WriteLine("1. To Insert the Data in Data Base \n2.END");
+            Console.WriteLine("1. To Insert the Data in Data Base \n2.Retrieve All Employee Data from the Data Base\n3.END");
             Console.WriteLine("Enter the Option");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -31,6 +31,13 @@ class Program
                     empservice.AddEmp(empPayrollModel);
                     break;
                 case 2:
+                    List<EmployeePayrollModel> empList = empservice.GetAllEmployees();
+                    foreach (EmployeePayrollModel data in empList)
+                    {
+                        Console.WriteLine(data.Id + " " + data.Name + " " + data.Salary + " " + data.Gender + " " + data.StartDate + " " + data.Address + " " + data.PhoneNumber + " " + data.Basic_Pay + " " + data.Taxable_Pay + " " + data.Deduction + " " + data.Tax + " " + data.Income_Tax + " " + data.Net_Pay);
+                    }
+                    break;
+                case 3:
                     check = false;
                     break;
                 default:
