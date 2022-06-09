@@ -8,7 +8,7 @@ class Program
         bool check = true;
         while (check)
         {
-            Console.WriteLine("1. To Insert the Data in Data Base \n 2.Retrieve All Employee Data from the Data Base\n 3.Update Employee Salary\n4.END");
+            Console.WriteLine("1. To Insert the Data in Data Base \n 2.Retrieve All Employee Data from the Data Base\n 3.Update Employee Salary\n4.Deleting the Recod from the Employee DataBase\n 5.END\n");
             Console.WriteLine("Enter the Option");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -44,6 +44,24 @@ class Program
                     empservice.UpdateEmp(empModel);
                     break;
                 case 4:
+                    EmployeePayrollModel emp1 = new EmployeePayrollModel();
+                    List<EmployeePayrollModel> List2 = empservice.GetAllEmployees();
+                    Console.WriteLine("Enter the Employee Id to Delete the Record  From the Table");
+                    int empId = Convert.ToInt32(Console.ReadLine());
+                    foreach (EmployeePayrollModel data in List2)
+                    {
+                        if (data.Id == empId)
+                        {
+                            empservice.DeleteEmp(empId);
+                            Console.WriteLine("Record Deleted");
+                        }
+                        else
+                        {
+                            Console.WriteLine(empId + "Invalid data");
+                        }
+                    }
+                    break;
+                case 5:
                     check = false;
                     break;
                 default:

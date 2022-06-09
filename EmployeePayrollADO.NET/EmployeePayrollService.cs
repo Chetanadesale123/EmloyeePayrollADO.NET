@@ -116,5 +116,26 @@ namespace EmployeePayrollADO.NET
                 return false;
             }
         }
+        //To delete Employee details    
+        public bool DeleteEmp(int Id)
+        {
+            connection();
+            SqlCommand com = new SqlCommand("SPDeleteEmpById", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Id", Id);
+
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
